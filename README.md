@@ -10,7 +10,7 @@ ResHub is a web application designed to provide a centralized hub of valuable re
 
 - **Sections**:
   - **Home**: General information about the resource hub.
-  - **Pool**: A section dedicated to the project pool.
+  - **Pool**: A section dedicated to pool projects.
   - **Cursus**: Information related to the 42 Cursus.
   - **Resources**: Various helpful resources for learning and projects.
   - **Paths**: Guidance on different learning paths.
