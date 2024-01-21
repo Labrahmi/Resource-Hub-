@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ResHub</title>
+    <link rel="stylesheet" href="/src/output.css">
+    <link rel="shortcut icon" href="/src/logo.png" type="image/x-icon">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    </style>
+</head>
+
+<body class="bg-gray-50 font-Roboto selection:bg-slate-200">
+    <header class="shadow bg-white flex justify-between items-center p-4 px-16">
+        <a class="text-xl font-bold p-2" href="/">
+            R-Hub
+        </a>
+        <div class="relative flex ">
+            <div>Create new post</div>
+            <div>
+                <img id="avatar"
+                    class="hover:hue-rotate-15 transition-all duration-200 ease-in-out select-none cursor-pointer w-12 rounded-full border border-blue-900"
+                    src="https://cdn.intra.42.fr/users/75d7b101fb67deb0a047461bfd99cda4/ylabrahm.jpg" alt="">
+                <div id="list"
+                    class="hidden w-44 flex-col font-thin bg-white pt-6 shadow-lg text-lg rounded-lg rounded-t-none absolute top-full -left-24 mt-2 -z-10">
+                    <a class="hover:font-normal transition-all duration-150 ease-in-out py-2 px-8" href="/#">Home</a>
+                    <a class="hover:font-normal transition-all duration-150 ease-in-out py-2 px-8" href="/#">Pool</a>
+                    <a class="hover:font-normal transition-all duration-150 ease-in-out py-2 px-8" href="/#">Cursus</a>
+                    <a class="hover:font-normal transition-all duration-150 ease-in-out py-2 px-8" href="/#">Resources</a>
+                    <hr>
+                    <a class="hover:font-normal transition-all duration-150 ease-in-out py-2 px-8" href="/#">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main
+        class="absolute -z-20 py-16 max-w-full w-full overflow-hidden text-black flex flex-col justify-center items-center">
+        <div class="lg:w-[60rem] p-12">
+            <div class="flex flex-col space-y-4">
+                <!--  -->
+                <a href="/" class="flex w-fit opacity-65">
+                    <box-icon class="scale-110" name='left-arrow-alt' ></box-icon>
+                </a>
+                <div class="w-full bg-white p-4 py-6 flex justify-between items-center space-x-3 rounded border relative pr-8 transition-all duration-150 ease-in-out">
+                    <div class="w-full">
+                        <div class="text-3xl font-medium transition-all duration-150 ease-in-out">
+                            Creating a web server
+                        </div>
+                        <div class="flex py-1"></div>
+                        <div class="flex items-center py-2 font-thin select-none w-fit p-2">
+                            <div class="flex scale-90 opacity-70">
+                                <box-icon name='user' ></box-icon>
+                            </div>
+                            <div>ylabrahm</div>
+                        </div>
+                        <div class="py-4"><hr></div>
+                        <p class="font-extralight m-1 text-justify">
+                            here is a simple tutorial on how to create a web server using nodejs and express, it's very simple and easy to understand, you can also use this tutorial to create a web server using other languages like python, php, ruby, etc..., 
+                            but in this tutorial we will be using nodejs and express. i am using ubuntu 20.04, but you can use any linux distro or windows, it doesn't matter, just make sure you have nodejs installed on your machine.
+                            to install nodejs on your machine, you can follow this tutorial here, 
+                            or you can just google it, it's very easy to install nodejs on your machine, so let's get started.,
+                            first, we need to create a folder for our project, so open your terminal and type the following command:,
+                            mkdir my-project, then, we need to go to our project folder, so type the following command: cd my-project
+                            now, we need to create a file called index.js, so type the following command: touch index.js, now, we need to install express, so type the following command: npm install express, now, we need to open our index.js file and type the following code:,
+                            const express = require('express'), const app = express(), app.get('/', (req, res) => { res.send('Hello World!') }), app.listen(3000, () => { console.log('Example app listening on port 3000!') })
+                            now, we need to run our server, so type the following command: node index.js, now, open your browser and go to http://localhost:3000, you should see a message saying "Hello World!", if you see this message, then congratulations, you have successfully created a web server using nodejs and express, if you have any questions, feel free to ask me in the comments section below, i will be happy to help you, thank you for reading this tutorial, i hope you enjoyed it, see you in the next tutorial, bye bye.
+                            best regards, ylabrahm.
+                        </p>
+                        <div class="py-6"><hr></div>
+                        <div>
+                            <div class="flex items-center space-x-1 pb-1">
+                                <div class="flex scale-[1.1]"><box-icon name='link' ></box-icon></div>
+                                <div class="text-2xl font-medium">Links</div>
+                            </div>
+                            <div class="p-2 px-6 text-lg">
+                                <ul class="list-disc flex flex-col space-y-2">
+                                    <li><a target="_blank" class="underline text-gray-700" href="http://las.com/">How to be newmust be yes ashf kah faklfj la student</a></li>
+                                    <li><a target="_blank" class="underline text-gray-700" href="http://las.com/">Last but not must be yes safsfkakah faklfj laleast, yes</a></li>
+                                    <li><a target="_blank" class="underline text-gray-700" href="http://las.com/">How to be milmust be yes safsfkashf kah faklfj laionire hh</a></li>
+                                    <li><a target="_blank" class="underline text-gray-700" href="http://las.com/">Java for begimust be yes safsfkash faklfj lanners</a></li>
+                                    <li><a target="_blank" class="underline text-gray-700" href="http://las.com/">top 3 skills must be yes safsfkashf kah faklyou must know</a></li>
+                                    <li><a target="_blank" class="underline text-gray-700" href="http://las.com/">How to be newmust befsfkashf kah faklfj la student</a></li>
+                                    <li><a target="_blank" class="underline text-gray-700" href="http://las.com/">Last but notbe yes safsfkashf kah faklfj laleast, yes</a></li>
+                                    <li><a target="_blank" class="underline text-gray-700" href="http://las.com/">How to be milmust be yefkashf kah faklfj laionire hh</a></li>
+                                    <li><a target="_blank" class="underline text-gray-700" href="http://las.com/">Java for begimust be yes safsfka faklfj lanners</a></li>
+                                    <li><a target="_blank" class="underline text-gray-700" href="http://las.com/">top 3 skills must be yes safsfkashf kah u must know</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-red-500 flex justify-center">
+                    <button>Like</button>
+                    <button>Dislike</button>
+                </div>
+                <!--  -->
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+    <script src="index.js"></script>
+</body>
+
+</html>
