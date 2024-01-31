@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="/logo.png" type="image/x-icon">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
     </style>
 </head>
@@ -20,7 +21,7 @@
             <div>
                 <img id="avatar"
                     class="hover:hue-rotate-15 transition-all duration-200 ease-in-out select-none cursor-pointer w-12 rounded-full border border-gray-700"
-                    src="/user_icon.png" alt="">
+                    src="<%= accountUser.picture %>" alt="">
                 <div id="list"
                     class="hidden w-44 flex-col font-thin bg-white pt-6 shadow-lg text-lg rounded-lg rounded-t-none absolute top-full -left-24 mt-2 -z-10">
                     <a class="hover:font-normal transition-all duration-150 ease-in-out py-2 px-8" href="/#">Home</a>
@@ -51,14 +52,12 @@
                             <div class="flex scale-90 opacity-70">
                                 <box-icon name='user' ></box-icon>
                             </div>
-                            <div>
+                            <a class="" target="_blank" href="https://profile.intra.42.fr/users/<%= user.login %>">
                                 <%= user.login %>
-                            </div>
+                            </a>
                         </div>
                         <div class="py-4"><hr></div>
-                        <p class="font-extralight m-1 text-justify">
-                            <%= post.body %>
-                        </p>
+                        <pre class="m-1 text-justify text-wrap font-light"><%= post.body %></pre>
                         <div class="py-6"><hr></div>
                         <div>
                             <div class="flex items-center space-x-1 pb-1">
@@ -68,9 +67,9 @@
                             <div class="p-2 px-6 text-lg">
                                 <ul class="list-disc flex flex-col space-y-2">
                                     <% post.links.forEach(link => { %>
-                                        <li><a target="_blank" class="underline text-gray-700" href="<%= link %>">
-                                            <%= link %>
-                                        </a></li>
+                                        <li>
+                                            <a target="_blank" class="underline text-gray-700" href="<%= link %>"><%= link %></a>
+                                        </li>
                                     <% }); %>
                                 </ul>
                             </div>
