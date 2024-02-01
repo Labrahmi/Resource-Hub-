@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>R-Hub</title>
+    <link rel="stylesheet" href="/output.css">
+    <link rel="shortcut icon" href="/logo.png" type="image/x-icon">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    </style>
+</head>
+
+<body class="bg-gray-50 font-Roboto selection:bg-slate-200">
+    <header class="shadow bg-white flex justify-between items-center p-4 px-16">
+        <a class="text-xl font-bold p-2" href="/">
+            R-Hub
+        </a>
+        <div class="relative flex ">
+            <div>
+                <img id="avatar"
+                    class="hover:hue-rotate-15 transition-all duration-200 ease-in-out select-none cursor-pointer w-12 rounded-full border border-gray-700"
+                    src="<%= accountUser.picture %>" alt="">
+                <div id="list"
+                    class="hidden w-44 flex-col font-thin bg-white pt-6 shadow-lg text-lg rounded-lg rounded-t-none absolute top-full -left-24 mt-2 -z-10">
+                    <a class="hover:font-normal transition-all duration-150 ease-in-out py-2 px-8" href="/#">Home</a>
+                    <a class="hover:font-normal transition-all duration-150 ease-in-out py-2 px-8" href="/#">Pool</a>
+                    <a class="hover:font-normal transition-all duration-150 ease-in-out py-2 px-8" href="/#">Cursus</a>
+                    <a class="hover:font-normal transition-all duration-150 ease-in-out py-2 px-8" href="/#">Resources</a>
+                    <hr>
+                    <a class="hover:font-normal transition-all duration-150 ease-in-out py-2 px-8" href="/#">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main
+        class="absolute -z-20 py-16 max-w-full w-full overflow-hidden text-black flex flex-col justify-center items-center">
+        <div class="lg:w-[60rem] p-12">
+            <div class="flex flex-col space-y-4">
+                <!--  -->
+                <a href="/" class="flex w-fit opacity-65">
+                    <box-icon class="scale-110" name='left-arrow-alt' ></box-icon>
+                </a>
+                <div class="w-full bg-white p-4 py-6 flex justify-between items-center space-x-3 rounded border relative pr-8 transition-all duration-150 ease-in-out">
+                    <div class="w-full">
+                        <div class="text-3xl font-medium transition-all duration-150 ease-in-out">
+                            <%= post.title %>
+                        </div>
+                        <div class="flex py-1"></div>
+                        <div class="flex items-center py-2 font-thin select-none w-fit p-2">
+                            <div class="flex scale-90 opacity-70">
+                                <box-icon name='user' ></box-icon>
+                            </div>
+                            <a class="" target="_blank" href="https://profile.intra.42.fr/users/<%= user.login %>">
+                                <%= user.login %>
+                            </a>
+                        </div>
+                        <div class="py-4"><hr></div>
+                        <pre class="m-1 text-justify text-wrap font-light"><%= post.body %></pre>
+                        <div class="py-6"><hr></div>
+                        <div>
+                            <div class="flex items-center space-x-1 pb-1">
+                                <div class="flex scale-[1.1]"><box-icon name='link' ></box-icon></div>
+                                <div class="text-2xl font-medium">Links</div>
+                            </div>
+                            <div class="p-2 px-6 text-lg">
+                                <ul class="list-disc flex flex-col space-y-2">
+                                    <% post.links.forEach(link => { %>
+                                        <li>
+                                            <a target="_blank" class="underline text-gray-700" href="<%= link %>"><%= link %></a>
+                                        </li>
+                                    <% }); %>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center space-x-2">
+                    <a href="./<%= post._id %>/like" class="bg-white hover:bg-green-500 hover:fill-white hover:text-white p-2 rounded-lg w-32 m-1 border hover:border-green-600 flex justify-center items-center space-x-1 transition-all duration-150 ease-in-out">
+                        <div class="text-lg font-medium">Like</div>
+                        <div class="flex scale-90">
+                            <box-icon name='like' type='' ></box-icon>
+                        </div>
+                    </a>
+                    <a href="./<%= post._id %>/dislike" class="bg-white hover:bg-red-500 hover:fill-white hover:text-white p-2 rounded-lg w-32 m-1 border hover:border-red-600 flex justify-center items-center space-x-1 transition-all duration-150 ease-in-out">
+                        <div class="text-lg font-medium">Dislike</div>
+                        <div class="flex scale-90">
+                            <box-icon name='dislike' type='' ></box-icon>
+                        </div>
+                    </a>
+                </div>
+                <!--  -->
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+    <script src="/index_dom.js"></script>
+</body>
+
+</html>
