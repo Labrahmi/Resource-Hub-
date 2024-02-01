@@ -45,7 +45,7 @@
                 <div class="w-full bg-white p-4 py-6 flex justify-between items-center space-x-3 rounded border relative pr-8 transition-all duration-150 ease-in-out">
                     <div class="w-full">
                         <div class="text-3xl font-medium transition-all duration-150 ease-in-out">
-                            <%= post.Title %>
+                            <%= post.title %>
                         </div>
                         <div class="flex py-1"></div>
                         <div class="flex items-center py-2 font-thin select-none w-fit p-2">
@@ -77,18 +77,18 @@
                     </div>
                 </div>
                 <div class="flex justify-center space-x-2">
-                    <button class="bg-white hover:bg-green-500 hover:fill-white hover:text-white p-2 rounded-lg w-32 m-1 border hover:border-green-600 flex justify-center items-center space-x-1 transition-all duration-150 ease-in-out">
+                    <a href="./<%= post._id %>/like" class="bg-white hover:bg-green-500 hover:fill-white hover:text-white p-2 rounded-lg w-32 m-1 border hover:border-green-600 flex justify-center items-center space-x-1 transition-all duration-150 ease-in-out">
                         <div class="text-lg font-medium">Like</div>
                         <div class="flex scale-90">
-                            <box-icon name='like' type='solid' ></box-icon>
+                            <box-icon name='like' type='' ></box-icon>
                         </div>
-                    </button>
-                    <button class="bg-white hover:bg-red-500 hover:fill-white hover:text-white p-2 rounded-lg w-32 m-1 border hover:border-red-600 flex justify-center items-center space-x-1 transition-all duration-150 ease-in-out">
-                        <div class="text-lg font-medium">Like</div>
+                    </a>
+                    <a href="./<%= post._id %>/dislike" class="bg-white hover:bg-red-500 hover:fill-white hover:text-white p-2 rounded-lg w-32 m-1 border hover:border-red-600 flex justify-center items-center space-x-1 transition-all duration-150 ease-in-out">
+                        <div class="text-lg font-medium">Dislike</div>
                         <div class="flex scale-90">
-                            <box-icon name='dislike' type='solid' ></box-icon>
+                            <box-icon name='dislike' type='' ></box-icon>
                         </div>
-                    </button>
+                    </a>
                 </div>
                 <!--  -->
             </div>

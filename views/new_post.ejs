@@ -53,7 +53,7 @@
                     <div class="flex flex-col space-y-3">
                         <div class="flex flex-col space-y-1">
                             <label class="text-lg" for="post_title">Title</label>
-                            <input required class="bg-gray-50 p-2 rounded border focus:outline-none"
+                            <input name="title" required class="bg-gray-50 p-2 rounded border focus:outline-none"
                                 placeholder="dynamic resized and generic arra..." id="post_title" type="text">
                         </div>
                         <div class="flex py-2 w-full opacity-50">
@@ -61,7 +61,7 @@
                         </div>
                         <div class="flex flex-col space-y-1">
                             <label class="text-lg" for="post_desc">Description</label>
-                            <input required class="bg-gray-50 p-2 rounded border focus:outline-none"
+                            <input name="description" required class="bg-gray-50 p-2 rounded border focus:outline-none"
                                 placeholder="write a short to medium description" id="post_desc" type="text">
                         </div>
                         <div class="flex py-2 w-full opacity-50">
@@ -69,7 +69,7 @@
                         </div>
                         <div class="flex flex-col space-y-1">
                             <label class="text-lg" for="post_tags">Tags</label>
-                            <input required class="bg-gray-50 p-2 rounded border focus:outline-none"
+                            <input name="tags" required class="bg-gray-50 p-2 rounded border focus:outline-none"
                                 placeholder="write your tags separated by a space, ex: Algorithms push_swap c_programming"
                                 id="post_tags" type="text">
                         </div>
@@ -80,7 +80,7 @@
                     <div class="flex flex-col space-y-3">
                         <div class="flex flex-col space-y-1">
                             <label class="text-lg" for="post_body">Body</label>
-                            <textarea placeholder="another awesome resource to share"
+                            <textarea name="body" placeholder="another awesome resource to share"
                                 class="bg-gray-50 p-2 rounded border focus:outline-none" name="" id="post_body"
                                 cols="30" rows="10"></textarea>
                         </div>
@@ -100,7 +100,7 @@
                             <div class="flex flex-col space-y-3">
                                 <div id="input_field" class="flex items-center w-full space-x-2">
                                     <div class="opacity-65">●</div>
-                                    <input required class="bg-gray-50 p-2 rounded border focus:outline-none w-full"
+                                    <input name="links[]" required class="bg-gray-50 p-2 rounded border focus:outline-none w-full"
                                         placeholder="past your link address here" id="post_links" type="text">
                                 </div>
                             </div>

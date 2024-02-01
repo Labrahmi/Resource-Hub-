@@ -38,7 +38,7 @@
         </div>
     </header>
     <main
-        class="bg-gray-50 absolute top-0 lg:-top-16 -z-20 py-16 max-w-full w-full overflow-hidden text-black flex flex-col justify-center items-center">
+        class="bg-gray-50 absolute top-0 lg:-top-16 -z-20 py-16 max-w-full w-full overflow-hidden text-black flex flex-col justify-center items-center min-h-screen">
         <div class="w-full">
             <img class="w-full select-none" src="/back-04.png" alt="">
         </div>
@@ -71,7 +71,7 @@
                     <div class="flex">
                         <box-icon name='world'></box-icon>
                     </div>
-                    <div>Latest ressources</div>
+                    <div>Top ressources</div>
                 </div>
                 <select class="self-end bg-transparent cursor-pointer focus:outline-none" name="" id="">
                     <option selected disabled value="Sort by">Sorted by</option>
@@ -86,7 +86,7 @@
                         <div class="w-full">
                             <a href="/post/<%= post._id %>"
                                 class="text-lg font-medium hover:underline transition-all duration-150 ease-in-out">
-                                <%= post.Title %>
+                                <%= post.title %>
                             </a>
                             <p class="font-thin m-1">
                                 <%= post.description %>
