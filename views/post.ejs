@@ -13,30 +13,34 @@
 </head>
 
 <body class="bg-gray-50 font-Roboto selection:bg-slate-200">
-    <header class="shadow bg-white flex justify-between items-center p-4 px-16">
-        <a class="text-xl font-bold p-2" href="/">
-            R-Hub
+    <header class="w-full top-0 bg-gray-50 backdrop-blur-xl flex justify-between items-center p-2 lg:px-16 fixed transition-all duration-500 ease-in-out">
+        <a class="text-xl font-bold p-2 text-black flex space-x-1 items-center" href="/">
+            <div>R-Hub</div>
+            <div class="text-sm font-thin rounded-lg">Beta</div>
         </a>
-        <div class="relative flex ">
-            <div>
+        <div id="menu_div" class="flex space-x-8">
+            <a href="/post/new" class="hidden lg:flex font-black space-x-2 justify-center items-center p-2 px-4 text-white bg-[#003558] rounded-md border border-[#162027] hover:bg-[#02324d] transition-all duration-200 ease-in-out">
+                <div>Add new post</div>
+                <div class="flex fill-white"><box-icon name='folder-plus' ></box-icon></div>
+            </a>
+            <div class="relative">
                 <img id="avatar"
-                    class="hover:hue-rotate-15 transition-all duration-200 ease-in-out select-none cursor-pointer w-12 rounded-full border border-gray-700"
-                    src="<%= accountUser.picture %>" alt="">
+                    class="hover:hue-rotate-15 transition-all duration-100 ease-in-out select-none cursor-pointer w-12 rounded-full border border-gray-700"
+                    src="<%= user.picture %>" alt="">
                 <div id="list"
-                    class="hidden w-44 flex-col font-thin bg-white pt-6 shadow-lg text-lg rounded-lg rounded-t-none absolute top-full -left-24 mt-2 -z-10">
-                    <a class="hover:font-normal transition-all duration-150 ease-in-out py-2 px-8" href="/#">Home</a>
-                    <a class="hover:font-normal transition-all duration-150 ease-in-out py-2 px-8" href="/#">Pool</a>
-                    <a class="hover:font-normal transition-all duration-150 ease-in-out py-2 px-8" href="/#">Cursus</a>
-                    <a class="hover:font-normal transition-all duration-150 ease-in-out py-2 px-8" href="/#">Resources</a>
-                    <hr>
-                    <a class="hover:font-normal transition-all duration-150 ease-in-out py-2 px-8" href="/#">Logout</a>
+                    class="hidden w-44 flex-col font-thin bg-[#003558] text-white bg-opacity-[0.96] backdrop-blur-lg pt-4 shadow-lg rounded-lg absolute top-full -left-24 mt-2 -z-10 p-2">
+                    <a class="hover:font-normal transition-all duration-100 ease-in-out py-2 px-4" href="/">Home</a>
+                    <a class="hover:font-normal transition-all duration-100 ease-in-out py-2 px-4" href="/post/new">Add new post</a>
+                    <a class="hover:font-normal transition-all duration-100 ease-in-out py-2 px-4" href="/post/65bc1ecfd543eed37c1fbdb4">About Us</a>
+                    <div class="py-0.5"><hr class="opacity-30"></div>
+                    <a class="hover:font-normal transition-all duration-100 ease-in-out py-2 px-4" href="/logout">Logout</a>
                 </div>
             </div>
         </div>
     </header>
     <main
         class="absolute -z-20 py-16 max-w-full w-full overflow-hidden text-black flex flex-col justify-center items-center">
-        <div class="lg:w-[60rem] p-12">
+        <div class="lg:w-[60rem] lg:p-12 p-4">
             <div class="flex flex-col space-y-4">
                 <!--  -->
                 <a href="/" class="flex w-fit opacity-65">
@@ -57,7 +61,7 @@
                             </a>
                         </div>
                         <div class="py-4"><hr></div>
-                        <pre class="m-1 text-justify text-wrap font-light"><%= post.body %></pre>
+                        <pre class="m-1 text-wrap whitespace-pre-wrap font-light"><%= post.body %></pre>
                         <div class="py-6"><hr></div>
                         <div>
                             <div class="flex items-center space-x-1 pb-1">
@@ -77,13 +81,13 @@
                     </div>
                 </div>
                 <div class="flex justify-center space-x-2">
-                    <a href="./<%= post._id %>/like" class="bg-white hover:bg-green-500 hover:fill-white hover:text-white p-2 rounded-lg w-32 m-1 border hover:border-green-600 flex justify-center items-center space-x-1 transition-all duration-150 ease-in-out">
+                    <a href="./<%= post._id %>/like" class="select-none bg-white hover:bg-green-500 hover:fill-white hover:text-white p-2 rounded-lg w-32 m-1 border hover:border-green-600 flex justify-center items-center space-x-1 transition-all duration-150 ease-in-out">
                         <div class="text-lg font-medium">Like</div>
                         <div class="flex scale-90">
                             <box-icon name='like' type='' ></box-icon>
                         </div>
                     </a>
-                    <a href="./<%= post._id %>/dislike" class="bg-white hover:bg-red-500 hover:fill-white hover:text-white p-2 rounded-lg w-32 m-1 border hover:border-red-600 flex justify-center items-center space-x-1 transition-all duration-150 ease-in-out">
+                    <a href="./<%= post._id %>/dislike" class="select-none bg-white hover:bg-red-500 hover:fill-white hover:text-white p-2 rounded-lg w-32 m-1 border hover:border-red-600 flex justify-center items-center space-x-1 transition-all duration-150 ease-in-out">
                         <div class="text-lg font-medium">Dislike</div>
                         <div class="flex scale-90">
                             <box-icon name='dislike' type='' ></box-icon>
@@ -94,8 +98,40 @@
             </div>
         </div>
     </main>
+    <% if (typeof success != 'undefined') { %>
+        <div id="success" class="fixed bg-green-500 font-bold text-white bottom-0 right-0 m-6 p-2 px-8 rounded shadow-md select-none cursor-pointer hover:scale-[1.01] transition-all duration-300 ease-in-out">
+            Your operation was successful
+        </div>
+        <script>
+            setTimeout(() => {
+                document.querySelector("#success").classList.add("opacity-0");
+                setTimeout(() => {
+                    document.querySelector("#success").remove();
+                }, 100);
+            }, 4000);
+        </script>
+    <% } %>
     <footer></footer>
     <script src="/index_dom.js"></script>
+    <script>
+        window.addEventListener("scroll", () => {
+            let header = document.querySelector("header");
+            let menu_div = document.querySelector("#menu_div");
+            if (window.scrollY > 240)
+            {
+                header.classList.remove("top-0");
+                header.classList.add("-top-24");
+                list.classList.add("hidden");
+                list.classList.remove("flex");
+            }
+            else
+            {
+                header.classList.remove("-top-24");
+                header.classList.add("top-0");
+            }
+            console.log(window.scrollY);
+        });
+    </script>
 </body>
 
 </html>

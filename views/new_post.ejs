@@ -13,31 +13,34 @@
 </head>
 
 <body class="bg-gray-50 font-Roboto selection:bg-slate-200">
-    <header class="shadow bg-white flex justify-between items-center p-4 px-16">
-        <a class="text-xl font-bold p-2" href="/">
-            R-Hub
+    <header class="w-full top-0 bg-gray-50 backdrop-blur-xl flex justify-between items-center p-2 lg:px-16 fixed transition-all duration-500 ease-in-out">
+        <a class="text-xl font-bold p-2 text-black flex space-x-1 items-center" href="/">
+            <div>R-Hub</div>
+            <div class="text-sm font-thin rounded-lg">Beta</div>
         </a>
-        <div class="relative flex ">
-            <div>
+        <div id="menu_div" class="flex space-x-8">
+            <a href="/post/new" class="hidden lg:flex font-black space-x-2 justify-center items-center p-2 px-4 text-white bg-[#003558] rounded-md border border-[#162027] hover:bg-[#02324d] transition-all duration-200 ease-in-out">
+                <div>Add new post</div>
+                <div class="flex fill-white"><box-icon name='folder-plus' ></box-icon></div>
+            </a>
+            <div class="relative">
                 <img id="avatar"
-                    class="hover:hue-rotate-15 transition-all duration-200 ease-in-out select-none cursor-pointer w-12 rounded-full border border-gray-700"
+                    class="hover:hue-rotate-15 transition-all duration-100 ease-in-out select-none cursor-pointer w-12 rounded-full border border-gray-700"
                     src="<%= user.picture %>" alt="">
                 <div id="list"
-                    class="hidden w-44 flex-col font-thin bg-white pt-6 shadow-lg text-lg rounded-lg rounded-t-none absolute top-full -left-24 mt-2 -z-10">
-                    <a class="hover:font-normal transition-all duration-150 ease-in-out py-2 px-8" href="/#">Home</a>
-                    <a class="hover:font-normal transition-all duration-150 ease-in-out py-2 px-8" href="/#">Pool</a>
-                    <a class="hover:font-normal transition-all duration-150 ease-in-out py-2 px-8" href="/#">Cursus</a>
-                    <a class="hover:font-normal transition-all duration-150 ease-in-out py-2 px-8"
-                        href="/#">Resources</a>
-                    <hr>
-                    <a class="hover:font-normal transition-all duration-150 ease-in-out py-2 px-8" href="/#">Logout</a>
+                    class="hidden w-44 flex-col font-thin bg-[#003558] text-white bg-opacity-[0.96] backdrop-blur-lg pt-4 shadow-lg rounded-lg absolute top-full -left-24 mt-2 -z-10 p-2">
+                    <a class="hover:font-normal transition-all duration-100 ease-in-out py-2 px-4" href="/">Home</a>
+                    <a class="hover:font-normal transition-all duration-100 ease-in-out py-2 px-4" href="/post/new">Add new post</a>
+                    <a class="hover:font-normal transition-all duration-100 ease-in-out py-2 px-4" href="/post/65bc1ecfd543eed37c1fbdb4">About Us</a>
+                    <div class="py-0.5"><hr class="opacity-30"></div>
+                    <a class="hover:font-normal transition-all duration-100 ease-in-out py-2 px-4" href="/logout">Logout</a>
                 </div>
             </div>
         </div>
     </header>
     <main
         class="absolute -z-20 py-16 max-w-full w-full overflow-hidden text-black flex flex-col justify-center items-center">
-        <div class="lg:w-[60rem] p-12">
+        <div class="lg:w-[60rem] lg:p-12 p-4">
             <a href="/" class="flex w-fit opacity-65">
                 <box-icon class="scale-110" name='left-arrow-alt'></box-icon>
             </a>
@@ -127,7 +130,25 @@
             input_field.parentNode.appendChild(new_input_field);
         });
     </script>
-
+    <script>
+        window.addEventListener("scroll", () => {
+            let header = document.querySelector("header");
+            let menu_div = document.querySelector("#menu_div");
+            if (window.scrollY > 240)
+            {
+                header.classList.remove("top-0");
+                header.classList.add("-top-24");
+                list.classList.add("hidden");
+                list.classList.remove("flex");
+            }
+            else
+            {
+                header.classList.remove("-top-24");
+                header.classList.add("top-0");
+            }
+            console.log(window.scrollY);
+        });
+    </script>
 </body>
 
 </html>

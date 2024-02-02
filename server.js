@@ -118,6 +118,7 @@ app.get("/", is_authenticated, async (req, res) => {
     res.render("index", {
       posts: posts,
       user: user,
+      resourse_type: "Top ressources", // Top ressources
     });
   } catch (error) {
     res.status(500).send(JSON.stringify(error));
@@ -176,13 +177,14 @@ app.post("/post/new", is_authenticated, async (req, res) => {
       res.redirect(`/post/${result.insertedId}`);
     }
   } catch (error) {
-    res.status(500).send(JSON.stringify(error.message)); 
+    res.status(500).send(JSON.stringify(error.message));
   }
 });
 
 // Define a route to render the home page
 app.get("/post/:id", is_authenticated, async (req, res) => {
   try {
+    const success = req.query.success;
     const accountUser = req.session.user;
     if (accountUser != null) {
       await client.connect();
@@ -196,6 +198,7 @@ app.get("/post/:id", is_authenticated, async (req, res) => {
         post: post,
         user: user,
         accountUser: accountUser,
+        success: success,
       });
     } else {
       req.session.destroy();
@@ -235,7 +238,8 @@ app.get("/post/:id/:react", is_authenticated, async (req, res) => {
       );
       client.close();
     }
-    res.redirect(`/post/${req.params.id}`);
+    // redirect to the post with success message
+    res.redirect(`/post/${req.params.id}?success=1`);
   } catch (error) {
     res.status(500).send(JSON.stringify(error.message));
   }
@@ -243,7 +247,8 @@ app.get("/post/:id/:react", is_authenticated, async (req, res) => {
 
 // login page
 app.get("/login", (req, res) => {
-  res.render("login", { login_path: process.env.LOGIN_PATH });
+  let login_path = `${baseSite}/${authorizePath}?client_id=${clientId}&redirect_uri=${redURI}&response_type=code`;
+  res.render("login", { login_path: login_path });
 });
 
 // login callback
@@ -285,6 +290,48 @@ app.get("/tags", is_authenticated, (req, res) => {
 app.get("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/login");
+});
+
+
+app.post("/search", is_authenticated, async (req, res) => {
+  try {
+    const user = req.session.user;
+    let search = req.body;
+    await client.connect();
+    const collection = client.db("rhub").collection("posts");
+    let project = search.project;
+    let language = search.language;
+    let prompt = search.prompt;
+    let posts = [];
+    if (project != undefined || language != undefined) {
+      posts = await collection.find({
+        $or: [
+          { tags: { $in: [project] } },
+          { tags: { $in: [language] } },
+        ],
+      }).toArray();
+    }
+    else if (project == undefined && language == undefined) {
+      posts = await collection.find({
+        title: { $regex: prompt, $options: "i" },
+      }).toArray();
+    }
+    posts.sort((a, b) => {
+      return b.up_users.length - a.up_users.length;
+    });
+    res.render("index", {
+      posts: posts,
+      user: user,
+      resourse_type: "Search results ", // Search results
+    });
+  } catch (error) {
+    console.log(error.message)
+    res.redirect("/");
+  }
+});
+
+app.get("/search", is_authenticated, (req, res) => {
+  res.redirect("/");
 });
 
 // Start the server
